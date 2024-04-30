@@ -1,0 +1,15 @@
+C:\Users\willd\my-code-dir\final-project-will-wescott\bin\Debug\net8.0\final-project-will-wescott.exe
+C:\Users\willd\my-code-dir\final-project-will-wescott\bin\Debug\net8.0\final-project-will-wescott.deps.json
+C:\Users\willd\my-code-dir\final-project-will-wescott\bin\Debug\net8.0\final-project-will-wescott.runtimeconfig.json
+C:\Users\willd\my-code-dir\final-project-will-wescott\bin\Debug\net8.0\final-project-will-wescott.dll
+C:\Users\willd\my-code-dir\final-project-will-wescott\bin\Debug\net8.0\final-project-will-wescott.pdb
+C:\Users\willd\my-code-dir\final-project-will-wescott\obj\Debug\net8.0\final-project-will-wescott.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\willd\my-code-dir\final-project-will-wescott\obj\Debug\net8.0\final-project-will-wescott.AssemblyInfoInputs.cache
+C:\Users\willd\my-code-dir\final-project-will-wescott\obj\Debug\net8.0\final-project-will-wescott.AssemblyInfo.cs
+C:\Users\willd\my-code-dir\final-project-will-wescott\obj\Debug\net8.0\final-project-will-wescott.csproj.CoreCompileInputs.cache
+C:\Users\willd\my-code-dir\final-project-will-wescott\obj\Debug\net8.0\final-project-will-wescott.sourcelink.json
+C:\Users\willd\my-code-dir\final-project-will-wescott\obj\Debug\net8.0\final-project-will-wescott.dll
+C:\Users\willd\my-code-dir\final-project-will-wescott\obj\Debug\net8.0\refint\final-project-will-wescott.dll
+C:\Users\willd\my-code-dir\final-project-will-wescott\obj\Debug\net8.0\final-project-will-wescott.pdb
+C:\Users\willd\my-code-dir\final-project-will-wescott\obj\Debug\net8.0\final-project-will-wescott.genruntimeconfig.cache
+C:\Users\willd\my-code-dir\final-project-will-wescott\obj\Debug\net8.0\ref\final-project-will-wescott.dll
