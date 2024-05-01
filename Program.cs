@@ -1,6 +1,9 @@
 ﻿//Will W
 //Final Project
 // 4/30/24
+using System.Diagnostics;
+
+Stopwatch restStopwatch = new Stopwatch();
 
 Console.WriteLine("Welcome to the Workout Builder!");
 Console.WriteLine("Select up to three muscle groups for your workout:");
@@ -18,7 +21,39 @@ List<string> workoutPlan = BuildWorkout(selectedMuscleGroups, skillLevel);
 foreach (var exercise in workoutPlan)
 {
     Console.WriteLine(exercise);
+    StartRestTimer();
+    WaitForFinishWorkout();
+    CalculateAndDisplayAverageRestTime(); 
 }
+void StartRestTimer()
+    {
+        Console.WriteLine("Press any key to start rest time...");
+        Console.ReadKey();
+        Console.WriteLine("Rest time started. Press 's' to stop.");
+        restStopwatch.Restart();
+        while (!Console.KeyAvailable || Console.ReadKey(true).Key != ConsoleKey.S)
+        {
+            // Wait for 's' key to stop
+        }
+        restStopwatch.Stop();
+        Console.WriteLine("Rest time stopped.");
+    }
+
+    void WaitForFinishWorkout()
+    {
+        Console.WriteLine("Press 'q' to finish your workout...");
+        while (!Console.KeyAvailable || Console.ReadKey(true).Key != ConsoleKey.Q)
+        {
+            // Wait for 'q' key to be pressed
+        }
+    }
+
+    void CalculateAndDisplayAverageRestTime()
+    {
+        double averageRestTimeInSeconds = restStopwatch.Elapsed.TotalSeconds;
+        Console.WriteLine($"Average rest time: {averageRestTimeInSeconds} seconds.");
+    } 
+
 
 static string GetSkillLevel()
 {
