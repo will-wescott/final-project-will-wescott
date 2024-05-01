@@ -54,7 +54,6 @@ void StartRestTimer()
         Console.WriteLine($"Average rest time: {averageRestTimeInSeconds} seconds.");
     } 
 
-
 static string GetSkillLevel()
 {
     Console.WriteLine("Enter your skill level (Beginner/Advanced):");
@@ -122,27 +121,47 @@ static List<string> GetUserInput()
     return selectedMuscleGroups;
 }
 
-static List<string> BuildWorkout(List<string> muscleGroups, string skillLevel)
-{
-    List<string> workoutPlan = new List<string>();
-    Random rng = new Random();
-    foreach (var muscleGroup in muscleGroups)
+List<string> BuildWorkout(List<string> muscleGroups, string skillLevel)
     {
-        string filename = $"{skillLevel}Workouts{muscleGroup}.txt";
-        try
+        List<string> workoutPlan = new List<string>();
+        Random rng = new Random();
+        foreach (var muscleGroup in muscleGroups)
         {
-            var exercises = File.ReadAllLines(filename);
-            exercises = exercises.OrderBy(x => rng.Next()).Take(rng.Next(3, 6)).ToArray(); // Select 3-5 random exercises
-            foreach (var exercise in exercises)
+            if (muscleGroup.Equals("Custom"))
             {
-                string repInfo = muscleGroup.Equals("Abs") ? "15-20 reps x 4 sets" : "8-12 reps x 4 sets";
-                workoutPlan.Add($"{exercise} - {repInfo}");
+                workoutPlan.AddRange(GetCustomWorkout()); // Call the method to get custom workout
+            }
+            else
+            {
+                string filename = $"{skillLevel}Workouts{muscleGroup}.txt";
+                try
+                {
+                    var exercises = File.ReadAllLines(filename);
+                    exercises = exercises.OrderBy(x => rng.Next()).Take(rng.Next(3, 6)).ToArray(); // Select 3-5 random exercises
+                    foreach (var exercise in exercises)
+                    {
+                        string repInfo = muscleGroup.Equals("Abs") ? "15-20 reps x 4 sets" : "8-12 reps x 4 sets";
+                        workoutPlan.Add($"{exercise} - {repInfo}");
+                    }
+                }
+                catch (IOException)
+                {
+                    Console.WriteLine($"Error: Could not read file for {muscleGroup}. Make sure the file exists.");
+                }
             }
         }
-        catch (IOException)
-        {
-            Console.WriteLine($"Error: Could not read file for {muscleGroup}. Make sure the file exists.");
-        }
+        return workoutPlan;
     }
-    return workoutPlan;
-}
+
+    List<string> GetCustomWorkout()
+    {
+        Console.WriteLine("Enter your custom workout (press Enter after each exercise, type 'done' to finish):");
+        List<string> customWorkout = new List<string>();
+        string exercise = Console.ReadLine();
+        while (exercise.ToLower() != "done")
+        {
+            customWorkout.Add(exercise);
+            exercise = Console.ReadLine();
+        }
+        return customWorkout;
+    }
