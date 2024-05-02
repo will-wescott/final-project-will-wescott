@@ -2,9 +2,11 @@
 //Final Project
 // 4/30/24
 using System.Diagnostics;
+// Simple test
+Debug.Assert(BuildWorkout(new List<string> { "Chest" }, "Advanced").Count > 0, "BuildWorkout failed to create workout plan.");
 
 Stopwatch restStopwatch = new Stopwatch();
-
+//user menu
 Console.WriteLine("Welcome to the Workout Builder!");
 Console.WriteLine("Select up to three muscle groups for your workout:");
 Console.WriteLine("1. Chest");
@@ -54,7 +56,7 @@ void StartRestTimer()
         Console.WriteLine($"Average rest time: {averageRestTimeInSeconds} seconds.");
     } 
 
-static string GetSkillLevel()
+static string GetSkillLevel() //handles skill level input
 {
     Console.WriteLine("Enter your skill level (Beginner/Advanced):");
     string level = Console.ReadLine();
@@ -72,7 +74,7 @@ static List<string> GetUserInput()
         string[] inputs = input.Split(',');
         if (inputs.Length <= 3)
         {
-            foreach (string item in inputs)
+            foreach (string item in inputs) // handles user input
             {
                 if (int.TryParse(item, out int muscleGroupIndex) && muscleGroupIndex >= 1 && muscleGroupIndex <= 7)
                 {
@@ -102,7 +104,7 @@ static List<string> GetUserInput()
                     }
                 }
                 else
-                {
+                { //prevents entering invalid number
                     Console.WriteLine("Invalid input. Please enter numbers between 1 and 7 separated by commas.");
                     selectedMuscleGroups.Clear();
                     break;
@@ -133,7 +135,7 @@ List<string> BuildWorkout(List<string> muscleGroups, string skillLevel)
             }
             else
             {
-                string filename = $"{skillLevel}Workouts{muscleGroup}.txt";
+                string filename = $"{skillLevel}Workouts{muscleGroup}.txt";// pulls data from files to randomly compile into workout
                 try
                 {
                     var exercises = File.ReadAllLines(filename);
@@ -144,7 +146,7 @@ List<string> BuildWorkout(List<string> muscleGroups, string skillLevel)
                         workoutPlan.Add($"{exercise} - {repInfo}");
                     }
                 }
-                catch (IOException)
+                catch (IOException) //handles errors if the file doesnt exist
                 {
                     Console.WriteLine($"Error: Could not read file for {muscleGroup}. Make sure the file exists.");
                 }
@@ -153,7 +155,7 @@ List<string> BuildWorkout(List<string> muscleGroups, string skillLevel)
         return workoutPlan;
     }
 
-    List<string> GetCustomWorkout()
+    List<string> GetCustomWorkout() // handles custom workout user input
     {
         Console.WriteLine("Enter your custom workout (press Enter after each exercise, type 'done' to finish):");
         List<string> customWorkout = new List<string>();
